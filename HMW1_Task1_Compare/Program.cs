@@ -15,7 +15,7 @@ Console.Write("Результат: ");
 
 if (a==b) 
 {
-    Console.WriteLine("Числа a и b равны"); 
+    Console.Write("Числа "); 
     Console.Write(a); 
     Console.Write("  и ");
     Console.Write(b); 
