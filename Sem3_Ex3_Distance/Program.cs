@@ -23,6 +23,12 @@ double ay = inputDouble();
 double bx = inputDouble(); 
 double by = inputDouble(); 
 
-double ab = Math.Sqrt((bx-ax)*(bx-ax) + (by-ay)*(by-ay));  
+double GetDistanceBetweenTwoPoints (double ax, double ay, double bx, double by)
+{
+    double distance = Math.Sqrt((bx-ax)*(bx-ax) + (by-ay)*(by-ay)); 
+    return distance; 
+}
+
+double ab = GetDistanceBetweenTwoPoints(ax, ay, bx, by); 
 
 Console.WriteLine(ab); 
