@@ -64,6 +64,7 @@ void PrintArray (int[] array)
 bool GetArrayLength(out int length)
 {
     Console.Write("Введите длину массива => ");
+
     if (int.TryParse(Console.ReadLine(), out int l) && l > 0)
     {
         length = l;
