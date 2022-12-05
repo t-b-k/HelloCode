@@ -7,7 +7,7 @@
 double a;
 int b;
 
-if (inputNonZeroAAndIntegerB (out a, out b)) 
+if (inputNonZeroAAndIntegerB(out a, out b))
 {
     Console.WriteLine($"Вы ввели число А = {a} и число B = {b}. Возведем число А в степень B. ");
     Console.WriteLine($"Ответ: {raisingDoubleAToIntB(a, b)}");
@@ -16,11 +16,11 @@ if (inputNonZeroAAndIntegerB (out a, out b))
 
 bool inputNonZeroAAndIntegerB(out double a, out int b)
 {
-    a = 0; 
-    b = 0; 
-    
+    a = 0;
+    b = 0;
+
     Console.WriteLine("Введите число А, отличное от нуля, и целое число B. ");
-    
+
     Console.Write("Введите число A, отличное от нуля ==> ");
 
     if (double.TryParse(Console.ReadLine(), out double doubleNum))
@@ -43,7 +43,7 @@ bool inputNonZeroAAndIntegerB(out double a, out int b)
 
     Console.Write("Теперь введите целое число В ==> ");
 
-if (!int.TryParse(Console.ReadLine(), out int intNum))
+    if (!int.TryParse(Console.ReadLine(), out int intNum))
     {
         Console.WriteLine("То, что Вы ввели, не является целым числом. Программа завершает свою работу. ");
         return false;
@@ -52,29 +52,24 @@ if (!int.TryParse(Console.ReadLine(), out int intNum))
     {
         b = intNum;
     }
-return true; 
+    return true;
 }
 
 double raisingDoubleAToIntB(double a, int b)
 {
     double res = 1;
-    if (b > 0)
+    int pow = b;
+    if (pow < 0) pow = -pow;
+
+    for (int i = 1; i <= pow; i++)
     {
-        for (int i = 1; i <= b; i++)
-        {
-            res = res * a;
-        }
+        res = res * a;
     }
-    else
+
+    if (b < 0)
     {
-        if (b < 0)
-        {
-            for (int i = 1; i <= -b; i++)
-            {
-                res = res * a;
-            }
-            res = 1 / res;
-        }
+        res = 1 / res;
     }
+
     return res;
 }
