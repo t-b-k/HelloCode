@@ -7,7 +7,7 @@ bool isNumber = int.TryParse(Console.ReadLine(), out int number);
 
 if (!isNumber) 
 {
-    Console.WriteLine("Вы ввели че-то не то"); 
+    Console.WriteLine("Вы ввели что-то не то"); 
     return; 
 }
 else
