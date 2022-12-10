@@ -15,7 +15,7 @@ if (!isParsed)
 int rest7 = number % 7;
 int rest23 = number % 23;  
 
-if (rest7 == 0 & rest23 == 0) 
+if (rest7 == 0 && rest23 == 0) 
 {
     Console.Write($"Поздравляем! Число {number} делится одновременно и на 7, и на 23!");
 }
