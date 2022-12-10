@@ -14,6 +14,13 @@
 // и писать просто: CreateRandomArray(); 
 // и метод CreateRandomArray будет виден, несмотря на то, что он определен в другой папке. 
 
+// Напишем метод, который печатает что угодно - значения любых типов: 
+
+// public void PrintAnything (object text)
+// {
+//     Console.WriteLine (text); 
+// }
+
 using static Common.Helper; 
 
 // Задача 39: Напишите программу, которая перевернет одномерный массив 
