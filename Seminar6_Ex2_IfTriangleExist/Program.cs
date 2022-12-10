@@ -45,11 +45,11 @@ if (InputPositiveInteger("Введите длину стороны а => ", out 
 
     if (IsTriangle(a, b, c))
     {
-        Console.WriteLine($"Треугольник со сторонами {a}, {b} и {c} существует. \n");
+        Console.WriteLine($"\nРЕЗУЛЬТАТ: \n\tТреугольник со сторонами {a}, {b} и {c} существует. \n");
     }
     else
     {
-        Console.WriteLine($"Треугольника со сторонами {a}, {b} и {c} не существует. \n");
+        Console.WriteLine($"\nРЕЗУЛЬТАТ: \n\tТреугольника со сторонами {a}, {b} и {c} не существует. \n");
     }
 }
 else
