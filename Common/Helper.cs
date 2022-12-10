@@ -2,12 +2,16 @@
 
 public static class Helper
 {
+    // Методы, возвращающие логическое значение, и контролирующие 
+    // ввод пользователем правильных исходных данных
     public static bool InputPositiveInteger(string invit, out uint n)
     {
         Console.Write(invit);
         bool res = uint.TryParse(Console.ReadLine(), out n) && n != 0;
         return res;
     }
+
+    // Методы вывода информации на экран
     public static void PrintArray(int[] array)
     {
         for (var i = 0; i < array.Length; i++)
@@ -17,6 +21,7 @@ public static class Helper
         }
     }
 
+    // Методы создания массивов случайных чисел
     public static int[] CreateRandomArray()
     {
         Random random = new Random();
@@ -26,5 +31,22 @@ public static class Helper
             array[i] = random.Next(int.MinValue, int.MaxValue);
         }
         return array;
+    }
+
+    // Метод формирования строки, представляющей собой двоичную 
+    // запись заданного целого положительного числа
+
+    public static string GetToBin (int decNumber)
+    {
+        string binar = string.Empty; 
+        
+        int number = Math.Abs(decNumber); 
+
+        while (number != 0) 
+        {
+            binar = number % 2 + binar; 
+            number = number / 2;  
+        }
+        return binar; 
     }
 }
