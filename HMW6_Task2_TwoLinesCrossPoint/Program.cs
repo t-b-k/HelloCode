@@ -4,10 +4,10 @@
 
 using static Common.Helper; 
 
-double k1; 
-double b1; 
-double k2; 
-double b2; 
+double k1 = 0; 
+double b1 = 0; 
+double k2 = 0; 
+double b2 = 0; 
 
 Console.WriteLine("\nВведите параметры двух прямых, точку пересечения которых Вы хотите найти. \n");
 
@@ -40,13 +40,15 @@ else
     Console.WriteLine("\nТо, что Вы ввели, не является вещественным числом."+
                       "Программа заканчивает свою работу.\n"); 
 }
-     
 
-bool InputDouble (string invit, out double number)
-{
-    Console.Write(invit); 
-    return double.TryParse(Console.ReadLine(), out number); 
-}
+// Данный метод определен в папке Common. 
+// Здесь я привожу его, чтобы было понятно, как он работает: 
+
+// bool InputDouble (string invit, out double number)
+// {
+//     Console.Write(invit); 
+//     return double.TryParse(Console.ReadLine(), out number); 
+// }
 
 bool CrossPointExist (double k1, double b1, double k2, double b2)
 {
