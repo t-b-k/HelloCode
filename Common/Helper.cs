@@ -11,11 +11,17 @@ public static class Helper
         return res;
     }
 
-public static bool InputInteger (string invit, out int n)
+    public static bool InputInteger (string invit, out int n)
 {
     Console.Write(invit); 
     return int.TryParse(Console.ReadLine(), out n); 
 } 
+
+    public static bool InputDouble (string invit, out double number)
+    {
+        Console.Write(invit); 
+        return double.TryParse(Console.ReadLine(), out number); 
+    }
 
     // Методы вывода информации на экран
     public static void PrintArray(int[] array)
