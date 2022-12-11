@@ -34,9 +34,12 @@ if (count > N)
    
 }
 
+// Здесь в качестве комментария я даю описание метода InputInteger, 
+// чтобы проверяющему было понятно, как он работает
+//
 // bool InputInteger (string text, out int number)
 // {
-//     Console.Write(text); 
+//    Console.Write(text); 
 //    return int.TryParse(Console.ReadLine(), out number); 
 // } 
 
