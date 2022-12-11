@@ -12,10 +12,10 @@ public static class Helper
     }
 
     public static bool InputInteger (string invit, out int n)
-{
-    Console.Write(invit); 
-    return int.TryParse(Console.ReadLine(), out n); 
-} 
+    {
+        Console.Write(invit); 
+        return int.TryParse(Console.ReadLine(), out n); 
+    } 
 
     public static bool InputDouble (string invit, out double number)
     {
