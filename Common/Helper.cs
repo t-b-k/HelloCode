@@ -67,24 +67,29 @@ public static class Helper
 
     public static int[,] CreateRandomArray(int countOfRows, int countOfColumns)
     {
-        CreateRandomArray random
+        Random random = new Random();
         int[,] array = new int[countOfRows, countOfColumns];
 
         for (var i = 0; i < array.GetLength(0); i++)
         {
             for (var j = 0; j < array.GetLength(1); j++)
             {
-                array[i, j] = CreateRandomArray.Next(-10, 11);
+                array[i, j] = random.Next(-10, 11);
             }
         }
+        return array;
     }
 
     public static void Print2DArray(int[,] array)
-for (var i = 0; i<array.GetLength(0); i++) 
-{
-    for (var j = 0; j<array.GetLength(1); j++)
     {
-        Console.Write($"{array[i,j]} "); 
+        for (var i = 0; i < array.GetLength(0); i++)
+        {
+            for (var j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write($"{array[i, j]} ");
+            }
+            Console.WriteLine();             
+        }
     }
-}
+
 }
