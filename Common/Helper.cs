@@ -11,16 +11,16 @@ public static class Helper
         return res;
     }
 
-    public static bool InputInteger (string invit, out int n)
+    public static bool InputInteger(string invit, out int n)
     {
-        Console.Write(invit); 
-        return int.TryParse(Console.ReadLine(), out n); 
-    } 
+        Console.Write(invit);
+        return int.TryParse(Console.ReadLine(), out n);
+    }
 
-    public static bool InputDouble (string invit, out double number)
+    public static bool InputDouble(string invit, out double number)
     {
-        Console.Write(invit); 
-        return double.TryParse(Console.ReadLine(), out number); 
+        Console.Write(invit);
+        return double.TryParse(Console.ReadLine(), out number);
     }
 
     // Методы вывода информации на экран
@@ -48,17 +48,43 @@ public static class Helper
     // Метод формирования строки, представляющей собой двоичную 
     // запись заданного целого положительного числа
 
-    public static string GetToBin (int decNumber)
+    public static string GetToBin(int decNumber)
     {
-        string binar = string.Empty; 
-        
-        int number = Math.Abs(decNumber); 
+        string binar = string.Empty;
 
-        while (number != 0) 
+        int number = Math.Abs(decNumber);
+
+        while (number != 0)
         {
-            binar = number % 2 + binar; 
-            number = number / 2;  
+            binar = number % 2 + binar;
+            number = number / 2;
         }
-        return binar; 
+        return binar;
     }
+
+
+    // Методы для работы с двумерными массивами
+
+    public static int[,] CreateRandomArray(int countOfRows, int countOfColumns)
+    {
+        CreateRandomArray random
+        int[,] array = new int[countOfRows, countOfColumns];
+
+        for (var i = 0; i < array.GetLength(0); i++)
+        {
+            for (var j = 0; j < array.GetLength(1); j++)
+            {
+                array[i, j] = CreateRandomArray.Next(-10, 11);
+            }
+        }
+    }
+
+    public static void Print2DArray(int[,] array)
+for (var i = 0; i<array.GetLength(0); i++) 
+{
+    for (var j = 0; j<array.GetLength(1); j++)
+    {
+        Console.Write($"{array[i,j]} "); 
+    }
+}
 }
