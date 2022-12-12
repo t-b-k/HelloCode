@@ -31,10 +31,9 @@ bool CorrectInputOfArrayLength (out int size)
 {
     size = 0; 
     bool lengthCorrect = false; 
-    if (int.TryParse(Console.ReadLine(), out int length) && length > 1) 
+    if (int.TryParse(Console.ReadLine(), out size) && size > 1) 
     {
-        lengthCorrect = true; 
-        size = length;   
+        lengthCorrect = true;  
     }
     
     return lengthCorrect; 
