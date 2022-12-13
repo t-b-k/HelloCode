@@ -33,6 +33,25 @@ public static class Helper
         }
     }
 
+    public static void PrintArray(double[] array)
+    {
+        for (var i = 0; i < array.Length; i++)
+        {
+            Console.Write(array[i]);
+            Console.Write(" ");
+        }
+    }
+
+    public static void PrintArray(double[] array, int accuracy)
+    {
+        for (var i = 0; i < array.Length; i++)
+        {
+            Console.Write(Math.Round(array[i], accuracy));
+            Console.Write(" ");
+        }
+        Console.WriteLine();
+    }
+
     // Методы создания массивов случайных чисел
     public static int[] CreateRandomArray()
     {
@@ -80,6 +99,72 @@ public static class Helper
         return array;
     }
 
+    public static double[,] CreateRandom2DArray(uint qtyOfRows, uint qtyOfColumns, int minBound, int upperBound)
+    {
+        Random random = new Random();
+        double[,] array = new double[qtyOfRows, qtyOfColumns];
+
+        for (int i = 0; i < qtyOfRows; i++)
+        {
+            for (int j = 0; j < qtyOfColumns; j++)
+            {
+                array[i, j] = random.Next(minBound, upperBound) + random.NextDouble();
+            }
+        }
+        return array;
+    }
+
+    public static double[,] CreateRandom2DArray(out int qtyOfRows, out int qtyOfColumns,
+                                                int minBound, int upperBound)
+    {
+        Random random = new Random();
+        qtyOfRows = random.Next(2, 11);
+        qtyOfColumns = random.Next(2, 11);
+
+        double[,] array = new double[qtyOfRows, qtyOfColumns];
+
+        for (int i = 0; i < qtyOfRows; i++)
+        {
+            for (int j = 0; j < qtyOfColumns; j++)
+            {
+                array[i, j] = random.Next(minBound, upperBound) + random.NextDouble();
+            }
+        }
+        return array;
+    }
+
+    public static int[,] CreateRandom2DArray(out int qtyOfRows, out int qtyOfColumns,
+                                            uint maxRows, uint maxColumns,
+                                            int minValue, int maxValue)
+    {
+        Random random = new Random();
+
+        qtyOfRows = random.Next(2, (int)maxRows);
+        qtyOfColumns = random.Next(2, (int)maxColumns);
+
+        int[,] array = new int[qtyOfRows, qtyOfColumns];
+
+        for (int i = 0; i < qtyOfRows; i++)
+        {
+            for (int j = 0; j < qtyOfColumns; j++)
+            {
+                array[i, j] = random.Next(minValue, maxValue + 1);
+            }
+        }
+        return array;
+    }
+    public static void Print2DArray(double[,] array, uint accuracy)
+    {
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write(Math.Round(array[i, j], (int)accuracy) + "  ");
+            }
+            Console.WriteLine();
+        }
+    }
+
     public static void Print2DArray(int[,] array)
     {
         for (var i = 0; i < array.GetLength(0); i++)
@@ -118,5 +203,62 @@ public static class Helper
         }
         return array;
     }
+
+    public static bool InputDouble2DRandomArrayParameters(out uint numOfRows, out uint numOfCols,
+                                                          out int lowValue, out int upValue)
+    {
+        numOfRows = 0;
+        numOfCols = 0;
+        lowValue = 0;
+        upValue = 0;
+
+        Console.WriteLine("\nВведите исходные данные: \n");
+
+        return InputPositiveInteger("Число строк в массиве (целое положительное)    => ", out numOfRows)
+        && InputPositiveInteger("Число столбцов в массиве (целое положительное) => ", out numOfCols)
+        && InputInteger("Нижняя граница диапазона значений элементов (целое)    => ", out lowValue)
+        && InputInteger("Верхняя граница диапазона значений (целое)             => ", out upValue);
+
+    }
+
+    public static bool InputInt2DRandomArrayParameters(out uint maxNumOfRows, out uint maxNumOfCols,
+                                                        out int lowValue, out int upValue)
+    {
+        maxNumOfRows = 0;
+        maxNumOfCols = 0;
+        lowValue = 0;
+        upValue = 0;
+
+        Console.WriteLine("Введите исходные параметры для создания двумерного массива \n" +
+                            "случайных целых чисел, принадлежащих заданному диапазону: \n");
+
+        return InputPositiveInteger("Макс. число строк в массиве (целое положительное) => ", out maxNumOfRows)
+        && InputPositiveInteger("Макс. число столбцов в массиве (целое положительное) => ", out maxNumOfCols)
+        && InputInteger("Нижняя граница диапазона значений элементов (целое)    => ", out lowValue)
+        && InputInteger("Верхняя граница диапазона значений (целое)             => ", out upValue)
+        && maxNumOfRows >= 2
+        && maxNumOfCols >= 2
+        && lowValue < upValue;
+    }
+
+    public static double[] GetArrayOfAveragesByColumns(int[,] arrOfInt)
+    {
+        int width = arrOfInt.GetLength(1);
+        int height = arrOfInt.GetLength(0);
+
+        double[] result = new double[width];
+
+        for (int i = 0; i < width; i++)
+        {
+            double sum = 0;
+            for (int j = 0; j < height; j++)
+            {
+                sum = sum + arrOfInt[j, i];
+            }
+            result[i] = sum / height;
+        }
+        return result;
+    }
+
 
 }
