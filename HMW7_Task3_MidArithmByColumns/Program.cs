@@ -40,7 +40,7 @@ Console.ForegroundColor = ConsoleColor.Red;
 Console.WriteLine("\nА вот чему равны средние арифметические значения его столбцов \n" + 
                   $"с точностью до {accuracy} десятичных знака(ов): \n");
 
-PrintArray (arrayOfAverageByColumns, accuracy); 
+PrintArray (arrayOfAverageByColumns, accuracy, "; "); 
 
 Console.WriteLine (); 
 Console.ResetColor(); 
