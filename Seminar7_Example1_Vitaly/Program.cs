@@ -8,29 +8,6 @@
 // int[,] array = CreateRandomArray (3,4); 
 // Print2DArray(array); 
 
-int[,] CreateRandomArray (int countOfRows, int countOfColumns) 
-{
-    CreateRandomArray random
-    int[,] array = new int[countOfRows, countOfColumns];  
-
-    for (var i = 0; i < array.GetLength(0); i++) 
-    {
-        for (var j = 0; j < array.GetLength(1); j++)
-        {
-            array[i,j] = CreateRandomArray.Next(-10, 11); 
-        }
-    }
-} 
-
-void Print2DArray (int[,] array)
-for (var i = 0; i < array.GetLength(0); i++) 
-{
-    for (var j = 0; j < array.GetLength(1); j++)
-    {
-        Console.Write($"{array[i,j]} "); 
-    }
-}
-
 // КОРТЕЖИ. 
 
 // GetSomething(); 
@@ -83,6 +60,14 @@ for (var i = 0; i < array.GetLength(0); i++)
 // str.Distinct(); // Убирает все повторения, кроме 1-го
 // str.Remove (<Индес, с которого начинаем удаление>, <Сколько элементов удаляем>)
 // str.Trim() // Убирает пустые символы
+
+//https://csharp.webdelphi.ru/stroki-v-c-formatirovanie-i-interpolyaciya-strok/
+
+//Console.ForegroundColor = ConsoleColor.Red;  // изменить цвет шрифта в консоли
+// Console.ResetColor();                        // вернуть цвет шрифта в консоли к стандартному значению
+// Console.BackgroundColor = ConsoleColor.White; 
+// Console.ResetColor(); 
+
 
 
 
