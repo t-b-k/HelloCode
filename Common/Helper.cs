@@ -120,13 +120,13 @@ public static class Helper
     // Печать одномерного массива вещественных чисел в одну строку через 
     // заданный разделитель с заданной точностью
     public static void PrintArray(double[] array, int accuracy, string separator)
-    {   
-        var i = 0; 
-        for (; i < array.Length-1; i++)
+    {
+        var i = 0;
+        for (; i < array.Length - 1; i++)
         {
             Console.Write(Math.Round(array[i], accuracy) + separator);
         }
-        Console.WriteLine(Math.Round(array[i], accuracy) + ".\n"); 
+        Console.WriteLine(Math.Round(array[i], accuracy) + ".\n");
     }
 
     // Метод выводит в окно консоли двумерный массив вещественных чисел
@@ -210,10 +210,10 @@ public static class Helper
         return array;
     }
 
-     // Метод создает и возвращает двумерный массив вещественных чисел
+    // Метод создает и возвращает двумерный массив вещественных чисел
     // из диапазона (примерно) [minBound;upperBound]
     // с заданными кол-вами строк (qtyOfRows) и столбцов (qtyOfColumns)
-    public static double[,] CreateRandom2DArray(uint qtyOfRows, uint qtyOfColumns, 
+    public static double[,] CreateRandom2DArray(uint qtyOfRows, uint qtyOfColumns,
                                                 int minBound, int upperBound)
     {
         Random random = new Random();
@@ -275,6 +275,27 @@ public static class Helper
             for (int j = 0; j < qtyOfColumns; j++)
             {
                 array[i, j] = random.Next(minValue, maxValue + 1);
+            }
+        }
+        return array;
+    }
+
+    public static double[,] CreateRandom2DDoubleArray(out int qtyOfRows, out int qtyOfColumns,
+                                                uint maxRows, uint maxColumns,
+                                                int minValue, int maxValue)
+    {
+        Random random = new Random();
+
+        qtyOfRows = random.Next(2, (int)maxRows);
+        qtyOfColumns = random.Next(2, (int)maxColumns);
+
+        double[,] array = new double[qtyOfRows, qtyOfColumns];
+
+        for (int i = 0; i < qtyOfRows; i++)
+        {
+            for (int j = 0; j < qtyOfColumns; j++)
+            {
+                array[i, j] = random.Next(minValue, maxValue + 1) + random.NextDouble();
             }
         }
         return array;
