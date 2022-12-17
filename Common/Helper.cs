@@ -152,7 +152,7 @@ public static class Helper
         {
             for (var j = 0; j < array.GetLength(1); j++)
             {
-                Console.Write($"{array[i, j]} ");
+                Console.Write(string.Format("{0,-3}",array[i, j]));
             }
             Console.WriteLine();
         }
