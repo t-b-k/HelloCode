@@ -21,7 +21,7 @@ if (!FillArrayBySpiral(array, startMeaning))
 else
 {
     Console.WriteLine("\nРЕЗУЛЬТАТ: \n"); 
-    Print2DArray(array);
+    Print2DArray3Pos(array);
     Console.WriteLine(); 
 }
 
