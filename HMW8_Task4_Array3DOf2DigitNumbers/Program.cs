@@ -4,11 +4,23 @@
 
 using static Common.Helper; 
 
+Console.ForegroundColor = ConsoleColor.Yellow; 
+Console.WriteLine("\nЗАДАЧА: Заполнить случайный 3-мерный массив неповторяющимися 2-значными числами.\n"); 
+Console.ResetColor(); 
+
+Console.WriteLine("Чтобы задача была выполнима, произведение размерностей массива не должно превосходить 90. \n"); 
+
 // Неповторяющихся двузначных чисел всего 90, 
 // поэтому произведение размерностей 3-мерного массива не должно превышать этого значения: 
 int limitOfHeight = 4;
 int limitOfWidth = 4; 
 int limitOfDepth = 5; 
+
+Console.WriteLine("Поэтому мы сгенерируем массив, в котором: "); 
+Console.WriteLine("{0}, \n{1}, \n{2}.", 
+                    $"число строк не превышает {limitOfHeight}", 
+                    $"число столбцов не превышает {limitOfWidth}", 
+                    $"число слоев не превышает {limitOfDepth}"); 
 
 Random random = new Random(); 
 int qtyOfRows = random.Next(2, limitOfHeight+1);
@@ -29,8 +41,12 @@ Fill3DArrayWithRandom2DigitNumbers(array3D, arrayOfMeanings);
 
 // Распечатаем результат по слоям: 
 
+Console.ForegroundColor = ConsoleColor.Blue; 
+Console.WriteLine("\nПолученный массив выведем на экран по слоям: "); 
+
 Print3DArrayOf2DigitIntegers(array3D); 
 Console.WriteLine(); 
+Console.ResetColor(); 
 
 /*********************************************************************************/
 
