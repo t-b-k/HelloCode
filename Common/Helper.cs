@@ -152,11 +152,40 @@ public static class Helper
         {
             for (var j = 0; j < array.GetLength(1); j++)
             {
-                Console.Write(string.Format("{0,-3}",array[i, j]));
+                Console.Write(string.Format("{0}", array[i, j]));
             }
             Console.WriteLine();
         }
     }
+
+    // Метод выводит в окно консоли двумерный массив целых чисел
+    // построчно с разделителем "пробел". Под каждое число отводит 3 позиции. 
+    public static void Print2DArray3Pos(int[,] array)
+    {
+        for (var i = 0; i < array.GetLength(0); i++)
+        {
+            for (var j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write(string.Format("{0,3}", array[i, j]));
+            }
+            Console.WriteLine();
+        }
+    }
+
+    // Метод выводит в окно консоли двумерный массив целых чисел
+    // построчно с разделителем "пробел". Под каждое число отводит 5 позиций. 
+    public static void Print2DArray5Pos(int[,] array)
+    {
+        for (var i = 0; i < array.GetLength(0); i++)
+        {
+            for (var j = 0; j < array.GetLength(1); j++)
+            {
+                Console.Write(string.Format("{0,5}", array[i, j]));
+            }
+            Console.WriteLine();
+        }
+    }
+
 
     // Метод выводит в окно консоли двумерный массив вещественных чисел
     // построчно с разделителем "пробел". 
@@ -229,6 +258,26 @@ public static class Helper
         return array;
     }
 
+    // Метод создает и возвращает двумерный массив целых чисел
+    // из диапазона [minBound;upperBound]
+    // со случайным кол-вом столбцов из диапазона [2, maxQtyOfCols] 
+    // и заданным количеством строк (qtyOfRows)
+    public static int[,] CreateRandom2DArrayWithDefiniteNumberOfRows(uint maxQtyOfCols,
+                                         uint qtyOfRows, int minBound, int upperBound)
+    {
+        Random random = new Random();
+        int[,] array = new int[qtyOfRows, random.Next(2, (int)maxQtyOfCols + 1)];
+
+        for (int i = 0; i < qtyOfRows; i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                array[i, j] = random.Next(minBound, upperBound + 1);
+            }
+        }
+        return array;
+    }
+
     // Метод создает и возвращает двумерный массив вещественных чисел
     // из диапазона (примерно) [minBound;upperBound]
     // со случайным кол-вом строк (qtyOfRows) и столбцов (qtyOfColumns) из 
@@ -265,8 +314,8 @@ public static class Helper
     {
         Random random = new Random();
 
-        qtyOfRows = random.Next(2, (int)maxRows);
-        qtyOfColumns = random.Next(2, (int)maxColumns);
+        qtyOfRows = random.Next(2, (int)maxRows + 1);
+        qtyOfColumns = random.Next(2, (int)maxColumns + 1);
 
         int[,] array = new int[qtyOfRows, qtyOfColumns];
 
@@ -361,5 +410,51 @@ public static class Helper
         return result;
     }
 
+    // Метод создает и возвращает копию двумерного массива целых чисел, 
+    // полученного в качестве входного параметра
+
+    public static int[,] CopyOf2DArray(int[,] arr)
+    {
+        int[,] copyOfArr = new int[arr.GetLength(0), arr.GetLength(1)];
+
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                copyOfArr[i, j] = arr[i, j];
+            }
+        }
+        return copyOfArr;
+    }
+
+    // Метод подсчитывает и возвращает сумму элементов в строке с индексом stringIndex массива arr
+
+    public static int SumOfElements(int[,] arr, int stringIndex)
+    {
+        int result = 0;
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            result = result + arr[stringIndex, j];
+        }
+        return result;
+    }
+
+    // Метод возвращает одномерный массив, в котором i-й элемент
+    // есть сумма элементов i-й строки исходного 2-мерного массива
+
+    public static int[] SumsOfStringsElements(int[,] arr)
+    {
+        int[] result = new int[arr.GetLength(0)];
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            result[i] = arr[i, 0];
+            for (int j = 1; j < arr.GetLength(1); j++)
+            {
+                result[i] = result[i] + arr[i, j];
+            }
+        }
+        return result;
+    }
 
 }
