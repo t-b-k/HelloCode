@@ -16,6 +16,13 @@ public static class Helper
         return res;
     }
 
+    public static bool InputPositiveInteger(string invit, out int n)
+    {
+        Console.Write(invit);
+        bool res = int.TryParse(Console.ReadLine(), out n) && n > 0;
+        return res;
+    }
+
     // Метод контролирует правильный ввод пользователем целого числа
     //В качестве выходного параметра возвращает введенное число. 
     public static bool InputInteger(string invit, out int n)
@@ -198,6 +205,26 @@ public static class Helper
                 Console.Write($"{array[i, j]} ");
             }
             Console.WriteLine();
+        }
+    }
+
+    // Метод печатает все натуральные числа от N до M (N > M)в порядке убывания
+    // Если N оказывается меньше M, выдает сообщение об ошибке
+    public static void PrintByDescender(uint n, uint m)
+    {
+        if (n >= m)
+        {
+            if (n == m) Console.WriteLine(n);
+            else
+            {
+                Console.Write($"{n}, ");
+                PrintByDescender(n - 1, m);
+            }
+            return;
+        }
+        else
+        {
+            Console.WriteLine($"Печатать нечего, извините: {n} < {m}\n");
         }
     }
 
