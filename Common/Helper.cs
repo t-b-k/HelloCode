@@ -66,6 +66,25 @@ public static class Helper
 
     }
 
+    // Метод ввода строки пользователем после соответствующего приглашения в окне консоли. 
+    // Возвращает true, если введена непустая строка, и пользователь не нажал Ctrl+Z.
+    public static bool InputString(string invit, out string nextString)
+    {
+        Console.Write(invit);
+
+        string? inputStr = Console.ReadLine();
+        bool isStrNullOrEmpty = String.IsNullOrEmpty (inputStr);
+        if (isStrNullOrEmpty)
+        {
+            nextString = String.Empty;
+        }
+        else
+        {
+            nextString = inputStr;
+        }
+        return !isStrNullOrEmpty;
+    }
+
     // Метод контролирует правильность ввода пользователем входных параметров, 
     // для двумерного массива - 
     // число строк
@@ -227,6 +246,23 @@ public static class Helper
             Console.WriteLine($"Печатать нечего, извините: {n} < {m}\n");
         }
     }
+
+    // Метод выводит на экран массив строк. 
+    // Массив обрамлляется квадратными скобками, строки-элементы массива 
+    // заключаются в двойные кавычки и отделяются друг от друга заданным строковым разделителем
+    public static void PrintArrayOfStrings(string[] arr, string separator)
+    {
+        int i = 0;
+        Console.Write("[");
+        for (; i < arr.Length - 1; i++)
+        {
+            Console.Write("{0}{1}{2}", "\"", arr[i], "\"");
+            Console.Write(separator);
+        }
+        
+        Console.WriteLine("{0}{1}{2}{3}", "\"", arr[i], "\"", "]");
+    }
+
 
     // ***************************************************************************
     // Методы создания массивов случайных чисел
@@ -484,4 +520,42 @@ public static class Helper
         return result;
     }
 
+    // Метод подсчитывает в массиве строк количество строк, 
+    // длина которых не превышает заданную в параметре length.
+    public static int QtyOfStringsNotLongerThan(string[] arr, uint length)
+    {
+        int qtyOfStrings = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i].Length <= length)
+            {
+                qtyOfStrings = qtyOfStrings + 1;
+            }
+        }
+        return qtyOfStrings;
+    }
+
+    // Метод по заданному массиву строк формирует массив, в который 
+    // копируются только те строки, длина которых не превосходит заданной 
+    // в параметре maxLength
+    public static string[] GetStringsNotLongerThan(string[] arr, uint maxLength)
+    {
+        int resultArrayLength = QtyOfStringsNotLongerThan(arr, maxLength);
+
+        string[] resultArray = new string[resultArrayLength];
+
+        if (resultArrayLength != 0)
+        {
+            // string[] resultArray = new string[resultArrayLength];
+            for (int i = 0, j = 0; i < arr.Length; i++)
+            {
+                if (arr[i].Length <= maxLength)
+                {
+                    resultArray[j] = arr[i];
+                    j++;
+                }
+            }
+        }
+        return resultArray;
+    }
 }
